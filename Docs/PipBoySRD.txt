@@ -1,0 +1,69 @@
+# Systems:
+Pip Boy (Radio, Interactions, Geiger Counter, Inventory, Log)
+
+## RADIO
+Handled in background by background class- Radio
+### Class: RadioPlayer
+* Depends on Radio Stations
+* Plays audio from radio stations
+### Class: RadioPanel
+* Lists radio stations
+* Selecting a radio station controls radio player
+### Class: RadioStation(ScriptableObject)
+* Contains name of radio station
+* Contains lists of audio files with names of songs to play, just like Fallout
+
+## INTERACTIONS
+All UIs are dependent on a Panel class.
+New Unity input listeners handle inputs
+### Class: PipBoyManager
+* Controls whether the Pip Boy is shown or hidden
+* Handles which panel to display at given time
+* Transfers inputs to panel
+### Class: PipBoyAnimations
+* Plays animations for each interaction
+
+## GEIGER COUNTER
+* Handled in background by background class- GeigerCounter
+### Class: GeigerCounter
+* Attached to Player
+* Keeps track of incoming radiation
+* Clicks if rads are detected
+* Updates Player with RADS
+### Class: GiegerPanel
+* Displays incoming radiation
+
+## INVENTORY
+* Depends on the PIP BOY INTERACTION
+### Class: Item(Scriptable Object)
+* Name of item
+* Description of item
+* Quantity
+### Class: Inventory
+* Holds a list of items
+### Class: InventoryPanel
+* The view and controller of the inventory
+* Lets you select and view items in the inventory
+### Class: ItemPickup
+* Contains an item
+* When you interact with a gameObject that has one of these, picks up the item
+
+## LOG
+* Depends on the PIP BOY INTERACTION
+* Has an 'active quest'
+### Class: QuestPanel
+* Array of quests
+* Current quest
+* Hovering over a quest allows you to view it
+* Clicking on a quests set it to active
+### Class: Quest(ScriptableObject)
+* Quest name
+* Quest description
+
+## STATS
+* Has a bunch of fake stats
+* Has a Player
+### Class: StatsPanel
+* Draws out the fake stats and some real ones
+### Class: Player
+* Keeps track of real stats such as HP and RADS
